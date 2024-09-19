@@ -20,15 +20,11 @@ async def on_ready():
         print(f'Logged in as {bot.user.name}')
     
         for guild in bot.guilds:
-        #guild = bot.guilds[0]   
             print(guild.name)
             
-            # Iterate over all the channels in the guild
             for channel in guild.text_channels:
                 async for message in channel.history(after=datetime.fromisoformat('2024-04-05')):
-                #async for message in channel.history():
-                    # Print the desired information for each message
-                    # Append message data to the list
+                
                     messages_data.append({
                         "Message": message.content,
                         "Message Datetime": message.created_at.astimezone(saopaulo_tz),  # Convert to Sao Paulo timezone
@@ -43,9 +39,7 @@ async def on_ready():
                     
                 for thread in channel.threads:
                     async for message in thread.history(after=datetime.fromisoformat('2024-04-05')):
-                    #async for message in thread.history():
-                    # Print the desired information for each message
-                        # Append message data to the list
+                  
                         messages_data.append({
                             "Message": message.content,
                             "Message Datetime": message.created_at.astimezone(saopaulo_tz),
@@ -60,9 +54,7 @@ async def on_ready():
             for forum in guild.forums:
                 for thread in forum.threads:
                     async for message in thread.history(after=datetime.fromisoformat('2024-09-18')):
-                    #async for message in thread.history():
-                    # Print the desired information for each message
-                        # Append message data to the list
+                    
                         messages_data.append({
                             "Message": message.content,
                             "Message Datetime": message.created_at.astimezone(saopaulo_tz),
@@ -85,12 +77,6 @@ async def on_ready():
         exit()
     except:
         exit()
-    # print()
- 
-# @bot.command(name='comando_exemplo')
-# async def comando_exemplo(ctx):
-#     # acessar as informacoes pelo contexto
-#     ctx...
  
  
 bot.run('MTIxNTM4NjQ3ODgwOTQ0ODQ2OA.GGPAff.aub91Ftzz9aqsfF1ds8wQnSj0cG3ra5IAJycxs')
