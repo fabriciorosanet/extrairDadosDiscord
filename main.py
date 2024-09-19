@@ -3,8 +3,14 @@ from discord.ext import commands
 import pandas as pd
 from pytz import timezone
 from datetime import datetime
+from dotenv import load_dotenv
+import os
  
- 
+
+load_dotenv() # Carrega as variáveis de ambiente do arquivo .env
+
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN') # Obtém a token do bot a partir da variável de ambiente
+
 
 intents = discord.Intents.all()  # Habilita todas as permissões que o bot pode ter (como ler mensagens de canais, acessar a lista de membros
 bot = commands.Bot(command_prefix='!', intents=intents) # Cria uma instância do bot que usa o prefixo '!' para os comandos.
@@ -79,4 +85,4 @@ async def on_ready():
         exit()
  
  
-bot.run('MTIxNTM4NjQ3ODgwOTQ0ODQ2OA.GGPAff.aub91Ftzz9aqsfF1ds8wQnSj0cG3ra5IAJycxs')
+bot.run(DISCORD_TOKEN)
